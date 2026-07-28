@@ -1,0 +1,102 @@
+{
+  "expo": {
+    "name": "AIDr.",
+    "slug": "aidr",
+    "version": "1.0.0",
+    "scheme": "aidr",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "assetBundlePatterns": ["**/*"],
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      "expo-secure-store",
+      "expo-sqlite",
+      [
+        "expo-notifications",
+        {
+          "iosDisplayInForeground": true
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "AIDr. uses the camera only to scan documents you choose. Scans are processed on this device."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "AIDr. reads a photo only when you pick one to import. Images stay on this device."
+        }
+      ],
+      [
+        "@kingstinct/react-native-healthkit",
+        {
+          "NSHealthShareUsageDescription": "AIDr. reads the health data you authorise so it can describe your own trends and prepare questions for your clinician. Read-only; raw records never leave this device.",
+          "NSHealthUpdateUsageDescription": "AIDr. writes a medication dose event only when you tap Taken. Nothing else is ever written.",
+          "background": false
+        }
+      ]
+    ],
+    "ios": {
+      "bundleIdentifier": "app.aidr.mobile",
+      "supportsTablet": false,
+      "requireFullScreen": false,
+      "config": { "usesNonExemptEncryption": false },
+      "entitlements": {
+        "com.apple.developer.healthkit": true,
+        "com.apple.developer.healthkit.access": ["health-records"]
+      },
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSFaceIDUsageDescription": "Unlock AIDr. to view your saved health briefs."
+      }
+    },
+    "android": {
+      "package": "app.aidr.mobile",
+      "minSdkVersion": 28,
+      "permissions": [
+        "android.permission.health.READ_STEPS",
+        "android.permission.health.READ_DISTANCE",
+        "android.permission.health.READ_ACTIVE_CALORIES_BURNED",
+        "android.permission.health.READ_TOTAL_CALORIES_BURNED",
+        "android.permission.health.READ_EXERCISE",
+        "android.permission.health.READ_FLOORS_CLIMBED",
+        "android.permission.health.READ_SLEEP",
+        "android.permission.health.READ_HEART_RATE",
+        "android.permission.health.READ_RESTING_HEART_RATE",
+        "android.permission.health.READ_HEART_RATE_VARIABILITY",
+        "android.permission.health.READ_RESPIRATORY_RATE",
+        "android.permission.health.READ_OXYGEN_SATURATION",
+        "android.permission.health.READ_SKIN_TEMPERATURE",
+        "android.permission.health.READ_BLOOD_PRESSURE",
+        "android.permission.health.READ_BLOOD_GLUCOSE",
+        "android.permission.health.READ_BODY_TEMPERATURE",
+        "android.permission.health.READ_WEIGHT",
+        "android.permission.health.READ_HEIGHT",
+        "android.permission.health.READ_BODY_FAT",
+        "android.permission.health.READ_LEAN_BODY_MASS",
+        "android.permission.health.READ_BASAL_METABOLIC_RATE",
+        "android.permission.health.READ_HYDRATION",
+        "android.permission.health.READ_NUTRITION",
+        "android.permission.health.READ_MENSTRUATION",
+        "android.permission.health.WRITE_HYDRATION",
+        "android.permission.health.WRITE_NUTRITION",
+        "android.permission.POST_NOTIFICATIONS",
+        "android.permission.CAMERA"
+      ],
+      "intentFilters": [
+        {
+          "action": "androidx.health.ACTION_SHOW_PERMISSIONS_RATIONALE",
+          "category": ["android.intent.category.DEFAULT"]
+        }
+      ]
+    },
+    "extra": {
+      "router": { "origin": false },
+      "eas": { "projectId": "REPLACE_WITH_EAS_PROJECT_ID" }
+    }
+  }
+}
